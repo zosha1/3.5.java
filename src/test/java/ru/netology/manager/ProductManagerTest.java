@@ -24,14 +24,14 @@ public class ProductManagerTest {
 
     @Test
     public void searchBook() {
-        Product[] actual = manager.searchBy("Вино");
+        Product[] actual = manager.searchBy("Брэдбери");
         Product[] expected = new Product[]{roman};
         assertArrayEquals(actual, expected);
     }
 
     @Test
     public void searchPhone() {
-        Product[] actual = manager.searchBy("Galaxy");
+        Product[] actual = manager.searchBy("Samsung");
         Product[] expected = new Product[]{phone};
         assertArrayEquals(actual, expected);
     }
