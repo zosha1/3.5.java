@@ -15,31 +15,57 @@ public class ProductManagerTest {
     private Book roman = new Book(2, "Вино из одуванчиков", 500, "Рэй Брэдбери");
     private Smartphone phone = new Smartphone(3, "Galaxy", 300, "Samsung");
 
-    @BeforeEach
-    public void setUp() {
-        manager.add(banan);
-        manager.add(roman);
-        manager.add(phone);
-    }
 
     @Test
     public void searchBook() {
-        Product[] actual = manager.searchBy("Вино");
+        manager.add(banan);
+        manager.add(roman);
+        manager.add(phone);
+        Product[] actual = manager.searchBy("Брэдбери");
         Product[] expected = new Product[]{roman};
         assertArrayEquals(actual, expected);
     }
 
     @Test
     public void searchPhone() {
-        Product[] actual = manager.searchBy("Galaxy");
+        manager.add(banan);
+        manager.add(roman);
+        manager.add(phone);
+        Product[] actual = manager.searchBy("Samsung");
         Product[] expected = new Product[]{phone};
         assertArrayEquals(actual, expected);
     }
 
     @Test
     public void searchProduct() {
+        manager.add(banan);
+        manager.add(roman);
+        manager.add(phone);
         Product[] actual = manager.searchBy("banan");
         Product[] expected = new Product[]{banan};
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    public void searchBook2() {
+        Product[] actual = manager.searchBy("Брэдбери");
+        Product[] expected = new Product[0];
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    public void searchPhone2() {
+        manager.add(phone);
+        Product[] actual = manager.searchBy("Samsung");
+        Product[] expected = new Product[]{phone};
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    public void searchProduct2() {
+        manager.add(phone);
+        Product[] actual = manager.searchBy("banan");
+        Product[] expected = new Product[0];
         assertArrayEquals(actual, expected);
     }
 }
