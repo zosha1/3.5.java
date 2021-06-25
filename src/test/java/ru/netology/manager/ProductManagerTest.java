@@ -13,6 +13,7 @@ public class ProductManagerTest {
 
     private Product banan = new Product(1, "banan", 27);
     private Book roman = new Book(2, "Вино из одуванчиков", 500, "Рэй Брэдбери");
+    private Book roman2 = new Book(2, "451 градус по Фаренгейту", 500, "Рэй Брэдбери");
     private Smartphone phone = new Smartphone(3, "Galaxy", 300, "Samsung");
 
 
@@ -68,6 +69,15 @@ public class ProductManagerTest {
         Product[] expected = new Product[0];
         assertArrayEquals(actual, expected);
     }
+
+    @Test
+    public void searchBooks() {
+        manager.add(banan);
+        manager.add(roman);
+        manager.add(roman2);
+        manager.add(phone);
+        Product[] actual = manager.searchBy("Рэй");
+        Product[] expected = new Product[]{roman, roman2};
+        assertArrayEquals(actual, expected);
+    }
 }
-
-
